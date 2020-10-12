@@ -9,6 +9,7 @@ export default class Props extends Component {
     ten: "ELTR13",
     lop: 13,
   };
+
   render() {
     return (
       <div>
