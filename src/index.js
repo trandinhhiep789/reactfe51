@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 //cấu hình redux
-import {rootReducer} from './redux/reduces/rootReducer'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import rootReducer from './redux/reduces/rootReducer'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
 const store = createStore(rootReducer)
 
@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

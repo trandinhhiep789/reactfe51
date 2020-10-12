@@ -12,6 +12,7 @@ import DemoListAndKey from "./ListAndKeys/DemoListAndKey";
 import Props from "./Props/Props";
 import BaiTapGioHang from "./components/BaiTapGioHang/index";
 import BaiTapGioHangRedux from "./BaiTapRedux/BaiTapGioHangRedux";
+import BaiTapXucXac from "./BaiTapRedux/BaiTapXucXac/BaiTapXucXac";
 
 function App() {
   //Bên trong lệnh return của function component là nd là nd giao diện của thẻ này. lưu ý chỉ có 1 thẻ duy nhất vd: <div>...</div>
@@ -31,7 +32,8 @@ function App() {
       {/* <DemoListAndKey></DemoListAndKey> */}
       {/* <Props></Props> */}
       {/* <BaiTapGioHang /> */}
-      <BaiTapGioHangRedux/>
+      {/* <BaiTapGioHangRedux/> */}
+      <BaiTapXucXac />
     </div>
   );
 }

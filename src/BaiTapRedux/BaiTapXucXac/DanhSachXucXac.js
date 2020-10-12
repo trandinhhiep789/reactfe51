@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class SanPhamGH extends Component {
+export default class DanhSachXucXac extends Component {
     render() {
         return (
             <div>
