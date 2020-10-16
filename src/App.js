@@ -32,7 +32,7 @@ function App() {
       {/* <DemoListAndKey></DemoListAndKey> */}
       {/* <Props></Props> */}
       {/* <BaiTapGioHang /> */}
-      {/* <BaiTapGioHangRedux/> */}
+      {/* <BaiTapGioHangRedux /> */}
       <BaiTapXucXac />
     </div>
   );

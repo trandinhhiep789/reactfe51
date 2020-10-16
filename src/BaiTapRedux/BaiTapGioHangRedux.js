@@ -6,9 +6,9 @@ import SanPhamRedux from './SanPhamRedux';
 export default class BaiTapGioHangRedux extends Component {
 
     renderSanPham = () => {
-        return DanhSachSPc.map((sp,i) => {
+        return DanhSachSPc.map((sp, i) => {
             return <div className="col-4" key={i}>
-                <SanPhamRedux sanPham={sp}/>
+                <SanPhamRedux sanPham={sp} />
             </div>
         })
     }
@@ -19,13 +19,13 @@ export default class BaiTapGioHangRedux extends Component {
                 <h3 className="text-center">Bài Tập Giỏ Hàng REDUX</h3>
                 <div>
                     <div className="text-right">Gio hàng(0)</div>
-                    <GioHangRedux/>
+                    <GioHangRedux />
                 </div>
                 <div className="row">
                     {this.renderSanPham()}
                 </div>
 
-                
+
             </div>
         )
     }

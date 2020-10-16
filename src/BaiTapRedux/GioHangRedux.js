@@ -82,9 +82,6 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         tangGiamSoLuong: (maSP, tangGiam) => {
-
-
-
             const action = {
                 type: 'TANG_GIAM_SO_LUONG',
                 maSP,
@@ -96,4 +93,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux);// kết nối giữa gioHangReduxComponent và radux store
+export default connect(mapStateToProps)(GioHangRedux);// kết nối giữa gioHangReduxComponent và radux store

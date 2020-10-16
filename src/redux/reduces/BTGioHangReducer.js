@@ -18,9 +18,9 @@ const BaiTapGioHangReducer = (state = stateDefaut, action) => {
 
     switch (action.type) {
         case 'THEM_GIO_HANG': {
-            //xử lý cập nhậ lại state
+            // xử lý cập nhật lại state
             let gioHangCapNhat = [...state.gioHang]
-            //tìm sp có trong giỏ hàng ko
+            // tìm sp có trong giỏ hàng ko
             const index = gioHangCapNhat.findIndex(spGH => spGH.maSP === action.spGH.maSP)
 
 
@@ -38,7 +38,7 @@ const BaiTapGioHangReducer = (state = stateDefaut, action) => {
 
             const index = gioHangCapNhat.findIndex(spGH => spGH.maSP === action.maSPClick)
 
-            if (index !== -1) {
+            if (index != -1) {
                 gioHangCapNhat.splice(index, 1)
             }
             //cập nhật lại state.gioHang

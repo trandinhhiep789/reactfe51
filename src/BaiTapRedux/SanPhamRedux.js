@@ -14,15 +14,16 @@ class SanPhamRedux extends Component {
                     <p className="card-text">{sanPham.giaBan}</p>
                     <button onClick={() => {
                         this.props.themGioHang(sanPham)
-                    }} className="btn btn-danger">
-                        them gio hang
+                    }} className="btn btn-success">
+                        Thêm giỏ hàng
                     </button>
-                </div>
+                </div>;
 
             </div>
         )
     }
 }
+
 const mapStateToProps = (dispatch) => {
     return {
 
