@@ -12,7 +12,7 @@ class DanhSachXucXac extends Component {
             <div className="row mt-5 text-center">
                 <div className="col-3">
                     <button onClick={() => {
-                        this.props.taiXiu("Tài")
+                        this.props.taiXiu("Tài", "Tài")
                     }} className=" p-5 btn btn-success display-4" style={{ borderRadius: "30px" }}><span className="display-4">Tài</span></button>
                 </div>
                 <div className="col-6 bg-dark" style={{ borderRadius: "30px" }}>
@@ -23,7 +23,7 @@ class DanhSachXucXac extends Component {
                 </div>
                 <div className="col-3">
                     <button onClick={() => {
-                        this.props.taiXiu("Xỉu")
+                        this.props.taiXiu("Xỉu", "Xỉu")
                     }} className=" p-5 btn btn-danger display-4" style={{ borderRadius: "30px" }}><span className="display-4">Xỉu</span></button>
                 </div>
 
@@ -40,11 +40,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        taiXiu: (taiXiu) => {
+        taiXiu: (taiXiu, chonChua) => {
             console.log("11111");
             const action = {
                 type: 'TAI_XIU',
-                taiXiu
+                taiXiu,
+                chonChua,
             }
             dispatch(action)
         }

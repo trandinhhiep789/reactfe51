@@ -13,6 +13,9 @@ import Props from "./Props/Props";
 import BaiTapGioHang from "./components/BaiTapGioHang/index";
 import BaiTapGioHangRedux from "./BaiTapRedux/BaiTapGioHangRedux";
 import BaiTapXucXac from "./BaiTapRedux/BaiTapXucXac/BaiTapXucXac";
+import LifeCycle from "./A.LifeCycle/LifeCycle";
+import FromComponent from "./B. FormComponent/FromComponent";
+import DanhSachNguoiDung from "./B. FormComponent/DanhSachNguoiDung";
 
 function App() {
   //Bên trong lệnh return của function component là nd là nd giao diện của thẻ này. lưu ý chỉ có 1 thẻ duy nhất vd: <div>...</div>
@@ -33,7 +36,9 @@ function App() {
       {/* <Props></Props> */}
       {/* <BaiTapGioHang /> */}
       {/* <BaiTapGioHangRedux /> */}
-      <BaiTapXucXac />
+      {/* <BaiTapXucXac /> */}
+      {/* <LifeCycle /> */}
+      <DanhSachNguoiDung />
     </div>
   );
 }
