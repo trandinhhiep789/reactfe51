@@ -16,6 +16,13 @@ import BaiTapXucXac from "./BaiTapRedux/BaiTapXucXac/BaiTapXucXac";
 import LifeCycle from "./A.LifeCycle/LifeCycle";
 import FromComponent from "./B. FormComponent/FromComponent";
 import DanhSachNguoiDung from "./B. FormComponent/DanhSachNguoiDung";
+import BaiTapDoiMauXe from "./Hook/DemoHookUseState/BaiTapDoiMauXe";
+import DemoHookUseState from "./Hook/DemoHookUseState/DemoHookUseState";
+import DemoHookUseEffect from "./Hook/DemoHookUseEffect/DemoHookUseEffect";
+import DemoUseCallBack from "./Hook/DemoUseCallBack/DemoUseCallBack";
+import DemoHookUseMemo from "./Hook/DemoHookUseMemo/DemoHookUseMemo";
+import KetQuaTroChoi from "./BaiTapRedux/BaiTapXucXac/KetQuaTroChoi";
+import GameXucXacReactF from "./Hook/GameXucXacReactF/GameXucXacReactF";
 
 function App() {
   //Bên trong lệnh return của function component là nd là nd giao diện của thẻ này. lưu ý chỉ có 1 thẻ duy nhất vd: <div>...</div>
@@ -38,7 +45,14 @@ function App() {
       {/* <BaiTapGioHangRedux /> */}
       {/* <BaiTapXucXac /> */}
       {/* <LifeCycle /> */}
-      <DanhSachNguoiDung />
+      {/* <DanhSachNguoiDung /> */}
+      {/* <DemoHookUseState /> */}
+      {/* <BaiTapDoiMauXe /> */}
+      {/* <DemoHookUseEffect /> */}
+      {/* <DemoUseCallBack /> */}
+      {/* <DemoHookUseMemo /> */}
+      <GameXucXacReactF />
+
     </div>
   );
 }

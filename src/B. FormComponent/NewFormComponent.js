@@ -3,23 +3,9 @@ import swal from 'sweetalert2'
 import { connect } from 'react-redux'
 import { xoaNguoiDungAction } from '../redux/actions/QuanLyNguoiDungAction'
 
-class FromComponent extends Component {
+class NewFromComponent extends Component {
 
-    state = {
-        value: {
-            maNguoiDung: '',
-            tenNguoiDung: '',
-            soDienThoai: '',
-            email: ''
-        },
-        error: {
-            maNguoiDung: '',
-            tenNguoiDung: '',
-            soDienThoai: '',
-            email: ''
-        },
-        maNguoiDungXoa: ''
-    }
+
 
     handleChangeInput = (event) => {
         //lấy name và value
@@ -30,11 +16,11 @@ class FromComponent extends Component {
         console.log(types)
 
         //xử lý value
-        let newValue = { ...this.state.value } // tạo value mới = value cũ
+        let newValue = { ...this.props.stateForm.value } // tạo value mới = value cũ
         newValue[name] = value // thay đổi giá trị bên trong value, gõ đến đâu kt đến đấy
 
         //xử lý error
-        let newErrors = { ...this.state.error }
+        let newErrors = { ...this.props.stateForm.error }
         newErrors[name] = value.trim() === '' ? "Khong duoc bo trong" : ''
 
         //validation các trường đặc biệt
@@ -53,28 +39,21 @@ class FromComponent extends Component {
 
 
 
-        this.setState({
-            value: newValue,// gán value = value mới
-            error: newErrors
-        })
-
         // this.setState({
-        // maNguoiDung: value
-        // maNguoiDung: value
-        // ...
-        //     [name]: value
-        // }, () => {
-        //     console.log(this.state)
+        //     value: newValue,// gán value = value mới
+        //     error: newErrors
         // })
-    }
 
-    //giải pháp 1: sử lụng lifeCycle componentWillReceiveprops
-    //hàm này chạy khi props thay đổi và trước khi render
-    componentWillReceiveProps(newProps) {
-        //khi bấm nút sửa => props thay đổi ta lấy props từ người dùng chỉnh sửa (this.props.nguoiDungChinhSua) ta gán vào state của component => và cho render từ state
-        this.setState({
-            value: newProps.nguoiDungChinhSua
-        })
+
+        let action = {
+            type: 'HANDLE_CHANG_INPUT',
+            newState: {
+                values: newValue,
+                errors: newErrors
+            }
+        }
+        this.props.dispatch(action)
+
     }
 
 
@@ -84,7 +63,8 @@ class FromComponent extends Component {
 
         // lấy giá trị từ QuanLyNguoiDungReducer về rander lên các value
         // let { maNguoiDung, tenNguoiDung, soDienThoai, email } = this.props.nguoiDungChinhSua
-        let { maNguoiDung, tenNguoiDung, soDienThoai, email } = this.state.value
+        console.log(this.props);
+        let { maNguoiDung, tenNguoiDung, soDienThoai, email } = this.props.stateForm.values
 
         return (
             <div>
@@ -96,14 +76,14 @@ class FromComponent extends Component {
                         let valid = true;
                         //duyệt thuộc tính  trong object value (duyệt thuộc tính trong đối tượng dùng ES6 for in)
 
-                        for (let tenThuocTinh in this.state.value) {
-                            if (this.state.value[tenThuocTinh].trim() === '') {
+                        for (let tenThuocTinh in this.props.stateForm.value) {
+                            if (this.props.stateForm.value[tenThuocTinh].trim() === '') {
                                 valid = false
                             }
                         }
 
-                        for (let tenThuocTinh in this.state.error) {
-                            if (this.state.error[tenThuocTinh].trim() !== '') {
+                        for (let tenThuocTinh in this.props.stateForm.error) {
+                            if (this.props.stateForm.errors[tenThuocTinh].trim() !== '') {
                                 valid = false
                             }
                         }
@@ -129,13 +109,13 @@ class FromComponent extends Component {
                                     value luôn */}
                                     <input types="maNguoiDung" value={maNguoiDung} className="form-control" name="maNguoiDung"
                                         onChange={this.handleChangeInput} />
-                                    <p className="text-danger">{this.state.error.maNguoiDung}</p>
+                                    <p className="text-danger">{this.props.stateForm.errors.maNguoiDung}</p>
                                 </div>
                                 <div className="form-group">
                                     <span>Ten nguoi dung</span>
                                     <input types="tenNguoiDung" value={tenNguoiDung} className="form-control" name="tenNguoiDung"
                                         onChange={this.handleChangeInput} />
-                                    <p className="text-danger">{this.state.error.tenNguoiDung}</p>
+                                    <p className="text-danger">{this.props.stateForm.errors.tenNguoiDung}</p>
                                 </div>
                             </div>
                             <div className="col-6">
@@ -143,17 +123,18 @@ class FromComponent extends Component {
                                     <span>So dien thoai</span>
                                     <input types="soDienThoai" types="phoneNumber" value={soDienThoai} className="form-control" name="soDienThoai"
                                         onChange={this.handleChangeInput} />
-                                    <p className="text-danger">{this.state.error.soDienThoai}</p>
+                                    <p className="text-danger">{this.props.stateForm.errors.soDienThoai}</p>
                                 </div>
                                 <div className="form-group">
                                     <span>email</span>
                                     <input types="email" value={email} className="form-control" name="email"
                                         onChange={this.handleChangeInput} />
-                                    <p className="text-danger">{this.state.error.email}</p>
+                                    <p className="text-danger">{this.props.stateForm.errors.email}</p>
                                 </div>
                             </div>
                             <div className="col-12 text-center">
                                 <button className="btn btn-success">Them nguoi dung</button>
+                                <button className="btn btn-success ml-3">cap nhat</button>
                             </div>
 
                             <div className="text-right mt-5 d-flex col-12">
@@ -171,7 +152,7 @@ class FromComponent extends Component {
                                         //     maNguoiDung: this.state.maNguoiDungXoa
                                         // }
                                         //cách 2
-                                        this.props.dispatch(xoaNguoiDungAction(this.state.maNguoiDungXoa))
+                                        this.props.dispatch(xoaNguoiDungAction(this.props.stateForm.maNguoiDungXoa))
                                     }}
                                 >xoa</button>
                             </div>
@@ -186,9 +167,10 @@ class FromComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-        nguoiDungChinhSua: state.QuanLyNguoiDungReducer.nguoiDungChinhSua
+        nguoiDungChinhSua: state.QuanLyNguoiDungReducer.nguoiDungChinhSua,
+        stateForm: state.QuanLyNguoiDungReducer.stateForm//lấy state form từ redux về => binding lên hàm render
     }
 }
 
 
-export default connect(mapStateToProps)(FromComponent)
+export default connect(mapStateToProps)(NewFromComponent)
